@@ -5,10 +5,10 @@ import com.example.shop.entity.Notification;
 import com.example.shop.service.ItemService;
 import com.example.shop.service.NotifyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,5 +26,17 @@ public class ItemContoller {
     @GetMapping("/getNotification")
     public List<Notification> getNotification(){
         return notifyService.getNotification();
+    }
+
+    @PostMapping("/writeAdd")
+    public String writeAdd(@ModelAttribute Item item){
+
+        return itemService.writeAdd(item);
+    }
+
+    @GetMapping("/detail/{id}")
+    public Item getItemInfo(@PathVariable Long id){
+
+        return itemService.getItemInfo(id);
     }
 }
