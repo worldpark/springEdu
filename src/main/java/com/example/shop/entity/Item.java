@@ -6,10 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 public class Item {
 
     @Id
@@ -18,4 +20,5 @@ public class Item {
 
     private String title;
     private Integer price;
+
 }
