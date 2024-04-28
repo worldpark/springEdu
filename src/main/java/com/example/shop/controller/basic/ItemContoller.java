@@ -20,8 +20,6 @@ public class ItemContoller {
     @GetMapping("/list")
     public List<Item> list(){
 
-
-
         return itemService.list();
     }
 
