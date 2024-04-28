@@ -17,7 +17,7 @@ public class ItemContoller {
     private final ItemService itemService;
     private final NotifyService notifyService;
 
-    @GetMapping("/list")
+    @GetMapping("/getList")
     public List<Item> list(){
 
         return itemService.list();
@@ -34,7 +34,7 @@ public class ItemContoller {
         return itemService.writeAdd(item);
     }
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("/getDetail/{id}")
     public Item getItemInfo(@PathVariable Long id){
 
         return itemService.getItemInfo(id);

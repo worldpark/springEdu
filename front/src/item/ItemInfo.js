@@ -11,7 +11,7 @@ const ItemInfo = () => {
     const getItem = () => {
         axios({
             method: 'GET',
-            url: "/detail/" + id
+            url: "/getDetail/" + id
         }).then((response) => {
             console.log(response.data)
             setItem(response.data);

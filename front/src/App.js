@@ -14,7 +14,7 @@ function App() {
 
         axios({
             method: 'GET',
-            url: 'list',
+            url: 'getList',
         }).then((response) => {
             setList(response.data);
 
