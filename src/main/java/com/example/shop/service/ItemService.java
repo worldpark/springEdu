@@ -28,15 +28,13 @@ public class ItemService {
     public String writeAdd(Item item){
 
         itemRepository.save(item);
-        return "a";
+        return "c";
     }
 
     public Item getItemInfo(Long id){
 
         Item result = new Item();
-
         Optional<Item> resultOpt = itemRepository.findById(id);
-
 
         if(resultOpt.isPresent()){
             result = resultOpt.get();
@@ -45,5 +43,16 @@ public class ItemService {
         return result;
     }
 
+    public String updateItem(Item item){
+        itemRepository.save(item);
+
+        return "u";
+    }
+
+    public String deleteItem(Item item){
+        itemRepository.deleteById(item.getId());
+
+        return "d";
+    }
 
 }

@@ -1,26 +1,44 @@
 import '../App.css';
-import axios from "axios";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import axios, {Axios} from "axios";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 
+const Edit = () => {
 
-const Write = () => {
-
+    let {id} = useParams();
     let navicate = useNavigate();
 
     const [itemTitle, setItemTitle] = useState('');
     const [itemPrice, setItemPrice] = useState('');
 
-    const addWrite = () => {
+    const getItem = () => {
+        axios({
+            method:'GET',
+            url:'/getDetail/' + id
+        }).then((response) => {
+            setItemPrice(response.data.price);
+            setItemTitle(response.data.title);
+
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    useEffect(() => {
+        getItem();
+    }, [])
+
+    const itemUpdate = () => {
 
         let pushData = {
+            id: id,
             title: itemTitle,
             price: itemPrice
         }
 
         axios({
             method: 'POST',
-            url: '/writeAdd',
+            url: '/updateItem',
             data: pushData
         }).then(() => {
             navicate("/list");
@@ -33,14 +51,13 @@ const Write = () => {
         })
     }
 
-
-    return (
+    return(
         <div>
             <input name="title" value={itemTitle} onChange={(e) => setItemTitle(e.target.value)}/>
             <input name="price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)}/>
-            <button onClick={() => addWrite()}>전송</button>
+            <button onClick={() => itemUpdate()}>전송</button>
         </div>
     )
 }
 
-export default Write;
+export default Edit;

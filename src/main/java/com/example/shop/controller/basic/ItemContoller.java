@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +28,7 @@ public class ItemContoller {
     }
 
     @PostMapping("/writeAdd")
-    public String writeAdd(@ModelAttribute Item item){
+    public String writeAdd(@RequestBody Item item){
 
         return itemService.writeAdd(item);
     }
@@ -39,4 +38,17 @@ public class ItemContoller {
 
         return itemService.getItemInfo(id);
     }
+
+    @PostMapping("updateItem")
+    public String updateItem(@RequestBody Item item){
+
+        return itemService.updateItem(item);
+    }
+
+    @PostMapping("deleteItem")
+    public String deleteItem(@RequestBody Item item){
+
+        return itemService.deleteItem(item);
+    }
+
 }
