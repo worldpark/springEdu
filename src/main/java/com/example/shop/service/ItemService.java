@@ -3,7 +3,10 @@ package com.example.shop.service;
 import com.example.shop.entity.Item;
 import com.example.shop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +32,7 @@ public class ItemService {
     }
 
     public Item getItemInfo(Long id){
+
         Item result = new Item();
 
         Optional<Item> resultOpt = itemRepository.findById(id);
@@ -40,4 +44,6 @@ public class ItemService {
 
         return result;
     }
+
+
 }
