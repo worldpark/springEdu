@@ -6,6 +6,8 @@ import Notification from "./Norification/Notification";
 import Write from "./write/write";
 import ItemInfo from "./item/ItemInfo";
 import Edit from "./edit/itemEdit";
+import SignUp from "./Sign/SignUp";
+import Login from "./login/Login";
 
 function App() {
 
@@ -22,6 +24,9 @@ function App() {
                     <Route path="/write" element={<Write/>}/>
                     <Route path="/detail/:id" element={<ItemInfo/>}/>
                     <Route path="/edit/:id" element={<Edit/>}/>
+                    <Route path="/sign" element={<SignUp/>}/>
+                    <Route path="/login" element={<Login/>}/>
+
                     <Route path="*" element={
                         <div>에러난 페이지임</div>
                     }/>
@@ -35,12 +40,26 @@ const Home = () => {
 
     let navicate = useNavigate();
 
+    const loginTest = () => {
+        axios({
+            method: "GET",
+            url: "loginTest"
+        }).then((response) => {
+            console.log(response.data);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
     return (
         <>
             <div className='nav'>
                 <a className='logo'>SpringMall</a>
                 <a onClick={() => navicate('/list')}>List</a>
                 <a onClick={() => navicate('/write')}>Write</a>
+                <a onClick={() => navicate('/sign')}>Sign</a>
+                <a onClick={() => navicate('/login')}>Login</a>
+                <a onClick={() => loginTest()}>LoginTest</a>
             </div>
             <Outlet/>
         </>

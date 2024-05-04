@@ -8,13 +8,13 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @ControllerAdvice
 public class MyExceptionHandler {
 
-    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<String> handeler2(){
-        return ResponseEntity.status(400).body("에러남2");
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handeler(){
-        return ResponseEntity.status(400).body("에러남");
-    }
+//    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+//    public ResponseEntity<String> handeler2(){
+//        return ResponseEntity.status(400).body("에러남2");
+//    }
+//
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<String> handeler(){
+//        return ResponseEntity.status(400).body("에러남");
+//    }
 }
